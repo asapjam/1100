@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>James' Portfolio</title>
+        <meta charset="UTF-8"/>
+        <script src="index.js" defer></script>
+
+    </head>
+    <body>
+        <header>
+            <img src="Media\self.jpeg" alt="profile picture" length="100px" height="100px"/>
+            <b>James Lawson's Portfolio</b>
+            <nav>
+                <ul>
+                    <li><a href="#landing">Home</a></li>
+                    <li><a href="#bio">Bio</a></li>
+                    <li><a href="#socials">Socials</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="#landing">
+            <section id="bio">
+                <div class="bio">
+                    <img />
+                    <h1>Bio</h1>
+                    <p>I'm James Lawson, I'm 29 years old and I'm from Atlanta, Georgia. I live with my wife Mikayla and our two cats Peaches and Milo. I playing video games, making video games, watching movies, and hanging out with my friends and family. I hope to pursue a degree in software engineering so that I may create things that either help or entertain people.</p>
+                </div>
+
+            </section>
+            <section id="socials">
+                <div class="socials">
+                    <img />
+                    <h1>Social Media</h1>
+                    <h2>GitHub</h2>
+                    <img src="Media\github-logo-png-hd-11659780126wgzczltlbm.png" alt="profile picture" length="50px" height="50px"/>
+                    <a href="https://github.com/asapjam">GitHub</a>
+                    <h2>LinkedIn</h2>
+                    <img src="Media\linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="profile picture" length="50px" height="50px"/>
+                    <a href="https://www.linkedin.com/in/james-lawson-823a3b432/">LinkedIn</a>
+                </div>
+            </section>
+
+            <section id="projects">
+                <div class="projects">
+                    <img />
+                    <h1>Projects</h1>
+                    <div id = "projectTarget"></div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h1>Contact Form</h1>
+                <form method="POST">
+
+                    <!-- Name input -->
+                    <div class="inputRow">
+                        <div class="inputGroup">
+                            <label for="firstName">
+                                First Name
+                            </label>
+                            <input 
+                                id="firstName" 
+                                type="text" 
+                                placeholder="Enter your first name..." 
+                                required 
+                            />
+                        </div>
+                        <div class="inputGroup">
+                            <label for="lastName">
+                                Last Name
+                            </label>
+                            <input 
+                                id="lastName" 
+                                type="text" 
+                                placeholder="Enter your last name..." 
+                                required 
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Subject Input -->
+                    <div class="inputRow">
+                        <div class="inputGroup">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="businessInquiry" selected>Business Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="generalQuestion">General Question</option>
+                            </select>
+                        </div>
+                        <div class="inputGroup">
+                            <label for="email">
+                                Email Address
+                            </label>
+                            <input 
+                                id="email" 
+                                type="text" 
+                                placeholder="Enter your email name..." 
+                                required 
+                            />
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="inputGroup">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Enter your message here!" required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button>Contact Me</button>
+                </form>
+            </section>
+        </main>
+        <footer>Copyright 2026</footer>
+    </body>
+</html>
