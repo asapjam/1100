@@ -1,0 +1,101 @@
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffe5c2;
+  background: #4a192c;
+}
+
+body {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "GRAD" 0;
+  color: #ffe5c2;
+  background: #4a192c;
+}
+
+body header {
+  height:100vh;
+  width:15vw;
+  background: #ffe5c2;
+  color: #4a192c;
+  position: fixed;
+  top: 0px;
+  left:0px;
+}
+
+body header h1{
+  padding: 1rem;
+}
+
+.navbar {
+  position: sticky;
+  top :0px;
+  height:125vh;
+  width:15vw;
+}
+
+
+body header img{
+  width:15vw;
+  height: 15vw;
+}
+
+body header nav ul{
+  list-style: none;
+  padding: 1rem;
+}
+
+main{
+  width: 80vw;
+  padding-left: 16rem;
+}
+
+#socials {
+  background: #4a192c;
+}
+
+#socials ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.bio {
+  border: 1px solid #4a192c;
+  border-radius: 10px;
+}
+
+.bio p{
+  margin: 0rem 2rem;
+}
+
+.projects ul{
+  list-style: none;
+}
+
+#contact form{
+  margin: 0rem 2rem;
+}
+
+.inputGroup select, .inputGroup input, .inputGroup textarea{
+  display:flex;
+  margin-bottom: 1rem;
+}
+.inputGroup textarea{
+  min-width: 75vw;
+  min-height:20vh;
+}
+
+body footer {
+  width: 75%;
+  padding-left: 16rem;
+
+  margin: 1rem 0rem;
+}
