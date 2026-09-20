@@ -88,8 +88,6 @@ class Delivery extends DatabaseObject {
     );
   }
   static create(params) {
-    // const{address, scheduledTime, product, quantity} = params;
-    // return new Delivery(address, scheduledTime, product, quantity);
     return new Delivery(params);
   }
 }
@@ -113,10 +111,36 @@ class ProductDao {
     throw new Error("No get all method...");
   }
   getProductByName(name) {
-    throw new Error("No getbyname method...");
+    const products = this.getAll();
+    return products.find((product) => product.name == name);
   }
   update(product) {
     throw new Error("No update method");
+  }
+}
+
+class CookieStorageProductDao extends ProductDao{
+  constructor(){
+    super();
+    this.database = document.cookie;
+  }
+  getAll(){
+    const cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("products="));
+    
+    const productsData = cookieValue ? JSON.parse(cookieValue.split("=")[1]) : ProductDao.seeds;
+    return productsData.map((productData) => new Product(productData.name, productData.inventory));
+
+  }
+  update(product) {
+    const existingProducts = this.getAll();
+    const indexToDelete = existingProducts.findIndex(
+      (productInList) => productInList.name == product.name,
+    );
+    existingProducts.splice(indexToDelete, 1, product);
+    console.log(indexToDelete);
+    document.cookie = 'products=' + JSON.stringify(existingProducts) + '; SameSite=Lax; Secure;';
   }
 }
 
@@ -143,10 +167,6 @@ class SessionStorageProductDao extends ProductDao {
       const { name, inventory } = productData;
       return new Product(name, inventory);
     });
-  }
-  getProductByName(name) {
-    const products = this.getAll();
-    return products.find((product) => product.name == name);
   }
   update(product) {
     const existingProducts = this.getAll();
@@ -178,6 +198,26 @@ class SessionStorageDeliveryDao extends DeliveryDao {
   }
 }
 
+class CookieStorageDeliveryDao extends DeliveryDao{
+  constructor() {
+    super();
+    this.database = document.cookie;
+  }
+  getAll() {
+    const cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("deliveries="));
+    
+    const deliveriesData = cookieValue ? JSON.parse(cookieValue.split("=")[1]) : [];
+    return deliveriesData.map((deliveryData) => new Delivery(deliveryData));
+  }
+  create(delivery) {
+    const existingDeliveries = this.getAll();
+    existingDeliveries.push(delivery);
+    document.cookie = 'deliveries=' + JSON.stringify(existingDeliveries) + '; SameSite=Lax; Secure;';;
+  }
+}
+
 class CreateDeliveryService {
   constructor(productDao, deliveryDao) {
     this.productDao = productDao;
@@ -198,8 +238,12 @@ class CreateDeliveryService {
   }
 }
 
-const productDao = new SessionStorageProductDao();
-const deliveryDao = new SessionStorageDeliveryDao();
+// const productDao = new SessionStorageProductDao();
+// const deliveryDao = new SessionStorageDeliveryDao();
+
+const productDao = new CookieStorageProductDao();
+const deliveryDao = new CookieStorageDeliveryDao();
+
 const createDeliveryService = new CreateDeliveryService(
   productDao,
   deliveryDao,
@@ -216,6 +260,9 @@ for (let i = 0; i < deliveries.length; i++) {
 }
 
 const productNameSelect = document.querySelector("#deliveries form select");
+const quantityInput = document.querySelector("#deliveries form input[name='quantity']");
+
+
 const products = productDao.getAll();
 for (let i = 0; i < products.length; i++) {
   const product = products[i];
@@ -224,7 +271,7 @@ for (let i = 0; i < products.length; i++) {
   option.setAttribute("value", product.name);
   const existingInventory = product.inventory; 
   if(i == 0){
-    option.setAttribute("max", existingInventory);
+    quantityInput.setAttribute("max", existingInventory);
   }
   if(existingInventory > 0){
     productNameSelect.appendChild(option);
@@ -232,7 +279,6 @@ for (let i = 0; i < products.length; i++) {
 }
 
 function handleChangeToProductName(event){
-  const quantityInput = document.querySelector("#deliveries form input[name='quantity']");
   const productName = event.target.value;
   const selectedProduct = productDao.getProductByName(productName);
   const existingInventory = selectedProduct.inventory;
@@ -243,8 +289,6 @@ productNameSelect.addEventListener("change", handleChangeToProductName);
 
 const createDeliveryForm = document.querySelector("#deliveries form");
 createDeliveryForm.addEventListener("submit", (event) =>{
-  event.preventDefault();
-
   const formData = new FormData(event.target);
   const address = formData.get("address");
   const scheduledTime = formData.get("scheduledTime");

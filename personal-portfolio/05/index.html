@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>James' Portfolio</title>
+        <meta charset="UTF-8"/>
+        <script src="index.js" defer></script>
+
+        <!-- LINK STYLESHEET -->
+        <link rel="stylesheet" href="styles.css"/>
+
+        <!-- LINK FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <header>
+            <div class="navbar">
+                <img src="Media\self.jpeg" alt="profile picture" length="200px" height="200px"/>
+                <h1>
+                    <b>James Lawson's Portfolio</b>
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="#landing"><h3>Home</h3></a></li>
+                        <li><a href="#bio"><h3>Bio</h3></a></li>
+                        <li><a href="#socials"><h3>Socials</h3></a></li>
+                        <li><a href="#projects"><h3>Projects</h3></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main id="#landing">
+            <section id="bio">
+                <div class="bio">
+                    <h1>Bio</h1>
+                    <p>I'm James Lawson, I'm 29 years old and I'm from Atlanta, Georgia. I live with my wife Mikayla and our two cats Peaches and Milo. I playing video games, making video games, watching movies, and hanging out with my friends and family. I hope to pursue a degree in software engineering so that I may create things that either help or entertain people.</p>
+                </div>
+
+            </section>
+            <section id="socials">
+                <div class="socials">
+                    <h1>Social Media</h1>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/asapjam">
+                                <img src="Media\github-logo-png-hd-11659780126wgzczltlbm.png" alt="profile picture" length="50px" height="50px"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/james-lawson-823a3b432/">
+                                <img src="Media\linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="profile picture" length="50px" height="50px"/>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    
+                </div>
+            </section>
+
+            <section id="projects">
+                <div class="projects">
+                    <h1>Projects</h1>
+                    <div id = "projectTarget"></div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h1>Contact Form</h1>
+                <form method="POST">
+
+                    <!-- Name input -->
+                    <div class="inputRow">
+                        <div class="inputGroup">
+                            <label for="firstName">
+                                First Name
+                            </label>
+                            <input 
+                                id="firstName" 
+                                type="text" 
+                                placeholder="Enter your first name..." 
+                                required 
+                            />
+                        </div>
+                        <div class="inputGroup">
+                            <label for="lastName">
+                                Last Name
+                            </label>
+                            <input 
+                                id="lastName" 
+                                type="text" 
+                                placeholder="Enter your last name..." 
+                                required 
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Subject Input -->
+                    <div class="inputRow">
+                        <div class="inputGroup">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="businessInquiry" selected>Business Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="generalQuestion">General Question</option>
+                            </select>
+                        </div>
+                        <div class="inputGroup">
+                            <label for="email">
+                                Email Address
+                            </label>
+                            <input 
+                                id="email" 
+                                type="text" 
+                                placeholder="Enter your email name..." 
+                                required 
+                            />
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="inputGroup">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Enter your message here!" required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button>Contact Me</button>
+                </form>
+            </section>
+        </main>
+        <footer>Copyright 2026</footer>
+    </body>
+</html>
