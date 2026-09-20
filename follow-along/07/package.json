@@ -15,6 +15,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build",
+    "build:azure": "npm run build",
     "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
